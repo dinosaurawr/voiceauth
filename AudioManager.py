@@ -22,7 +22,11 @@ class AudioManager:
             f"{sex}{person_number}_{track}.wav"
         )
         series, _ = librosa.load(path=file_path, sr=constants.SAMPLE_RATE)
-        return self.filter(audio_series=series)
+        return series
+
+    def load_by_path(self, file_path):
+        series, _ = librosa.load(path=file_path, sr=constants.SAMPLE_RATE)
+        return series
 
     def record_sample(self):
         chunk = 1024
@@ -53,7 +57,7 @@ class AudioManager:
 
         print('Finished recording, saving...')
 
-        wf = wave.open(os.path.join(self.samples_directory, filename), 'wb')
+        wf = wave.open(os.path.join(os.getcwd(), filename), 'wb')
         wf.setnchannels(channels)
         wf.setsampwidth(p.get_sample_size(sample_format))
         wf.setframerate(constants.SAMPLE_RATE)
@@ -63,7 +67,7 @@ class AudioManager:
 
     def load_last_record(self):
         file_path = os.path.join(
-            self.samples_directory,
+            os.getcwd(),
             "last_record.wav"
         )
         series, _ = librosa.load(path=file_path, sr=constants.SAMPLE_RATE)
