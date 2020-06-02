@@ -94,3 +94,18 @@ class AudioManager:
             numpy.ceil(len(audio_series) / len(apsums)))[:len(audio_series)]
 
         return audio_series[apsums]
+
+    def get_samples_list(self):
+        result = []
+        recordings_dir = os.path.join(
+            os.getcwd(),
+            'free-spoken-digit-dataset',
+            'recordings'
+        )
+
+        for filename in os.listdir(recordings_dir):
+            if filename.endswith('.wav'):
+                result.append(
+                    os.path.join(recordings_dir, filename)
+                )
+        return result

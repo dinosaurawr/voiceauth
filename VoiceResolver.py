@@ -4,7 +4,7 @@ from VoiceFeatures import VoiceFeatures
 
 class VoiceResolver:
     
-    def __init__(self, resolver='mfcc'|'model'):
+    def __init__(self, resolver='mfcc'|'model', ):
         if (resolver == 'mfcc'):
             self.resolver = 
         return

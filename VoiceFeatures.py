@@ -77,7 +77,7 @@ class VoiceFeatures:
                 dtype=numpy.float32)
             euclidian = self.get_euclidian_distance_with_other(other_mfcc)
             same_by = round(1 /euclidian * 100, 2)
-            print(f'{self.label} same with {filename.split(".")[0]} is {same_by}')
+            print(f'{self.label} same with {filename.split(".")[0]} is {same_by}%')
             results[filename] = same_by
         return max(results.items(), key=operator.itemgetter(1))[0]
         
